@@ -41,7 +41,6 @@ public class ContactUsPageSteps {
                 .findElement(By.cssSelector(".form-field-error-msg"));
         Assert.assertTrue(contactUsPage.isVisible(messageTextAreaError));
         Assert.assertEquals(messageTextAreaError.getText(),"This field is required");
-        Assert.assertEquals(contactUsPage.messageTextArea().findElement(By.cssSelector("label")).getCssValue("color"),RED);
 
         WebElement privacyCheckBoxError = contactUsPage.privacyCheckBox()
                 .findElement(By.cssSelector(".form-field-error-msg"));
@@ -72,7 +71,9 @@ public class ContactUsPageSteps {
     }
     @Then("Error star icons must be visible")
     public void error_star_icons_must_be_visible() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        List<WebElement> errorStarIcons = contactUsPage.errorStarIcons();
+        errorStarIcons.forEach(errorStarIcon -> {
+            Assert.assertTrue(contactUsPage.isVisible(errorStarIcon));
+        });
     }
 }

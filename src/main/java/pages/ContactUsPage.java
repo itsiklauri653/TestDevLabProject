@@ -40,4 +40,8 @@ public class ContactUsPage extends BasePage {
     public List<WebElement> errorFields(){
         return findElements(By.cssSelector(".input-field.invalid"));
     }
+
+    public List<WebElement> errorStarIcons(){
+        return findElements(By.cssSelector(".input-field.invalid label::after"));
+    }
 }
